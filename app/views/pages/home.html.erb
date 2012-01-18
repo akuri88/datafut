@@ -1,18 +1,22 @@
 <table>
 	<tr>
+		<th></th>
 		<th>Equipo</th>
 		<th>PTS</th>
-		<th>DIF</th>
 		<th>GF</th>
 		<th>GC</th>
+		<th>DIF</th>
 	</tr>
 	<% @equipos.each do |equipo| %>
 		<tr>
+			<td><%= @posicion %></td>
+			<td><%= image_tag(equipo.Logo__c, :alt => equipo.Nombre__c, :class => "logo_tabla") %></td>
 			<td><%= equipo.Nombre__c %></td>
 			<td><%= equipo.Puntos__c %></td>
 			<td><%= equipo.Goles_A_Favor__c %></td>
 			<td><%= equipo.Goles_En_Contra__c %></td>
 			<td><%= equipo.Diferencia__c %></td>
 		</tr>
+		<% @posicion += 1 %>
 	<% end %>
 </table>
