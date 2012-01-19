@@ -1,4 +1,6 @@
 Datafut::Application.routes.draw do
 	resources :pages
-	root :to => "pages#home"  
+	resources :equipos
+	root :to => "pages#home" 
+	match '/equipos' => "equipos#show"
 end

@@ -1,0 +1,7 @@
+<ul>
+<% @equipo.class.attributes.each do |attr| %>
+    <li>
+        <%= attr %> : <%= @equipo[attr] %>
+    </li>
+<% end %>
+</ul>

@@ -11,7 +11,7 @@
 		<tr>
 			<td><%= @posicion %></td>
 			<td><%= image_tag(equipo.Logo__c, :alt => equipo.Nombre__c, :class => "logo_tabla") %></td>
-			<td><%= equipo.Nombre__c %></td>
+			<td><%= link_to equipo.Nombre__c, equipo_path(equipo.Id) %></td>
 			<td><%= equipo.Puntos__c %></td>
 			<td><%= equipo.Goles_A_Favor__c %></td>
 			<td><%= equipo.Goles_En_Contra__c %></td>
