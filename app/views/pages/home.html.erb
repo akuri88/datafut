@@ -1,8 +1,12 @@
 <table>
 	<tr>
 		<th></th>
-		<th>Equipo</th>
+		<th colspan="2">Equipo</th>
 		<th>PTS</th>
+		<th>JJ</th>
+		<th>JG</th>
+		<th>JE</th>
+		<th>JP</th>
 		<th>GF</th>
 		<th>GC</th>
 		<th>DIF</th>
@@ -12,10 +16,14 @@
 			<td><%= @posicion %></td>
 			<td><%= image_tag(equipo.Logo__c, :alt => equipo.Nombre__c, :class => "logo_tabla") %></td>
 			<td><%= link_to equipo.Nombre__c, equipo_path(equipo.Id) %></td>
-			<td><%= equipo.Puntos__c %></td>
-			<td><%= equipo.Goles_A_Favor__c %></td>
-			<td><%= equipo.Goles_En_Contra__c %></td>
-			<td><%= equipo.Diferencia__c %></td>
+			<td><%= equipo.Juegos_Jugados__c.to_i %></td>
+			<td><%= equipo.Juegos_Ganados__c.to_i %></td>
+			<td><%= equipo.Juegos_Empatados__c.to_i %></td>
+			<td><%= equipo.Juegos_Perdidos__c.to_i %></td>
+			<td><%= equipo.Puntos__c.to_i %></td>
+			<td><%= equipo.Goles_A_Favor__c.to_i %></td>
+			<td><%= equipo.Goles_En_Contra__c.to_i %></td>
+			<td><%= equipo.Diferencia__c.to_i %></td>
 		</tr>
 		<% @posicion += 1 %>
 	<% end %>

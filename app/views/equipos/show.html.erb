@@ -1,7 +1,52 @@
-<ul>
-<% @equipo.class.attributes.each do |attr| %>
-    <li>
-        <%= attr %> : <%= @equipo[attr] %>
-    </li>
+<%-# INFO EQUIPO -%>
+<div>
+	<div>
+		<%= image_tag(@equipo.Logo__c, :alt => @equipo.Nombre__c, :class => "logo_view") %>
+	</div>
+	<div>
+		<h1><%= @equipo.Name %></h1>
+	</div>
+</div>
+
+<% if false %>
+<%-# PARTIDOS -%>
+<div>
+	<table>
+		<% @partidos.each do |partido| %>
+			<tr>
+				<td><%= link_to partido.Local__c, equipo_path(partido.Local__c) %></td>
+				<td><%= link_to partido.Goles_Local - partido.Goles_Visita__c, equipo_path(partido.Id) %></td>
+				<td><%= link_to partido.Visita__c, equipo_path(partido.Visita__c) %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
 <% end %>
-</ul>
+
+<%-# JUGADORES -%>
+<div>
+	<table>
+		<tr>
+			<th>Nombre</th>
+			<th>Posición</th>
+			<th>Juegos Jugados</th>
+			<th>Juegos Titular</th>
+			<th>Minutos</th>
+			<th>Goles</th>
+			<th>Amonestaciones</th>
+			<th>Explusiones</th>
+		</tr>
+		<% @jugadores.each do |jugador| %>
+			<tr>
+				<td><%= link_to jugador.Nombre__c, equipo_path(jugador.Id) %></td>
+				<td><%= jugador.Posicion__c %></td>
+				<td><%= jugador.Juegos_Jugados__c.to_i %></td>
+				<td><%= jugador.Juegos_Titular__c.to_i %></td>
+				<td><%= jugador.Minutos_Jugados__c.to_i %></td>
+				<td><%= jugador.Goles__c.to_i %></td>
+				<td><%= jugador.Amonestaciones__c.to_i %></td>
+				<td><%= jugador.Expulsiones__c.to_i %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
