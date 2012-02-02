@@ -1,0 +1,36 @@
+<%-# INFO JUGADOR -%>
+<div>
+	<div>
+		<h1><%= @jugador.Nombre__c %></h1>
+	</div>
+	<div>
+		<h2><%= @jugador.Equipo__c %></h2>
+	</div>
+	<div>
+		<h2><%= "Posición: #{@jugador.Posicion__c}" %></h2>
+	</div>
+</div>
+
+<%-# PARTIDOS -%>
+<div>
+	<table>
+		<tr>
+			<th>Jornada</th>
+			<th>Partido</th>
+			<th>Titual</th>
+			<th>EC</th>
+			<th>SC</th>
+			<th>Minutos</th>
+		</tr>
+		<% @partidos.each do |partido| %>
+			<tr>
+				<td><%= partido.Resumen_Partido__r.Partido__r.Jornada__r.Numero__c.to_i %></td>
+				<td><%= "#{partido.Resumen_Partido__r.Partido__r.Local__r.Equipo__r.Nombre__c} #{partido.Resumen_Partido__r.Partido__r.Goles_Local__c.to_i} - #{partido.Resumen_Partido__r.Partido__r.Goles_Visita__c.to_i} #{partido.Resumen_Partido__r.Partido__r.Visita__r.Equipo__r.Nombre__c}" %></td>
+				<td><%= partido.Titular__c %></td>
+				<td><%= partido.Entra_Cambio__c %></td>
+				<td><%= partido.Sale_Cambio__c %></td>
+				<td><%= partido.Minutos_Jugados__c.to_i %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>

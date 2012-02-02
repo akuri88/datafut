@@ -4,24 +4,31 @@
 		<%= image_tag(@equipo.Logo__c, :alt => @equipo.Nombre__c, :class => "logo_view") %>
 	</div>
 	<div>
-		<h1><%= @equipo.Name %></h1>
+		<h1><%= @equipo.Nombre__c %></h1>
 	</div>
 </div>
 
-<% if false %>
 <%-# PARTIDOS -%>
 <div>
 	<table>
+		<tr>
+			<th>Fecha</th>
+			<th>Local</th>
+			<th>Marcador</th>
+			<th>Visita</th>
+			<th>Estadio</th>
+		</tr>
 		<% @partidos.each do |partido| %>
 			<tr>
-				<td><%= link_to partido.Local__c, equipo_path(partido.Local__c) %></td>
-				<td><%= link_to partido.Goles_Local - partido.Goles_Visita__c, equipo_path(partido.Id) %></td>
-				<td><%= link_to partido.Visita__c, equipo_path(partido.Visita__c) %></td>
+				<td><%= "#{partido.Fecha__c.to_s[8..9]}#{partido.Fecha__c.to_s[5..6]}/#{partido.Fecha__c.to_s[0..3]}" %></td>
+				<td><%= link_to partido.Local__r.Equipo__r.Nombre__c, equipo_path(partido.Local__r.Equipo__c) %></td>
+				<td><%= link_to "#{partido.Goles_Local__c.to_i} - #{partido.Goles_Visita__c.to_i}", equipo_path(partido.Id) %></td>
+				<td><%= link_to partido.Visita__r.Equipo__r.Nombre__c, equipo_path(partido.Visita__r.Equipo__c) %></td>
+				<td><%= link_to partido.Estadio__r.Name, equipo_path(partido.Estadio__c) %></td>
 			</tr>
 		<% end %>
 	</table>
 </div>
-<% end %>
 
 <%-# JUGADORES -%>
 <div>
@@ -38,7 +45,7 @@
 		</tr>
 		<% @jugadores.each do |jugador| %>
 			<tr>
-				<td><%= link_to jugador.Nombre__c, equipo_path(jugador.Id) %></td>
+				<td><%= link_to jugador.Nombre__c, jugadore_path(jugador.Id) %></td>
 				<td><%= jugador.Posicion__c %></td>
 				<td><%= jugador.Juegos_Jugados__c.to_i %></td>
 				<td><%= jugador.Juegos_Titular__c.to_i %></td>

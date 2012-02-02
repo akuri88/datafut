@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/heroku/databasedotcom.git
+  revision: 031a22a592d696c51687cb698a605d280789b8fb
+  specs:
+    databasedotcom (1.3.0)
+      json
+      multipart-post (~> 1.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -31,9 +39,6 @@ GEM
     addressable (2.2.6)
     arel (2.0.10)
     builder (2.1.2)
-    databasedotcom (1.1.4)
-      json
-      multipart-post (~> 1.1)
     databasedotcom-rails (1.0.0)
       databasedotcom
     diff-lcs (1.1.3)
@@ -54,7 +59,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.17.2)
-    multipart-post (1.1.3)
+    multipart-post (1.1.4)
     nokogiri (1.5.0)
     polyglot (0.3.3)
     rack (1.2.5)
@@ -113,7 +118,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  databasedotcom
+  databasedotcom!
   databasedotcom-rails
   heroku
   rails (= 3.0.9)
